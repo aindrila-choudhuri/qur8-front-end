@@ -1,1 +1,0 @@
-# qur8-front-end
