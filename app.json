@@ -7,7 +7,7 @@
     "plugins": [
       "expo-router"
     ],
-    "name": "my-app",
-    "slug": "my-app"
+    "name": "qur8-front-end",
+    "slug": "qur8-front-end"
   }
 }
