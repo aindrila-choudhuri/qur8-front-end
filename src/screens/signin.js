@@ -7,6 +7,8 @@ import ProceedIcon from "../../assets/SVG/proceedIcon";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
 import { setSignIn } from "../redux/slices/authSlice";
+import { useState } from "react";
+
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -48,10 +50,10 @@ const SignIn = () => {
           </View>
         </View>
         <View style={styles.footerParent}>
-          <Text style={styles.text1}>I agree to Qur8's </Text>
-          <Text style={styles.text2}>Terms & Conditions </Text>
-          <Text style={styles.text3}>&</Text>
-          <Text style={styles.text4}> Privacy Policy</Text>
+          <Text style={styles.textNormal}>I agree to Qur8's </Text>
+          <Text style={styles.textBold}>Terms & Conditions </Text>
+          <Text style={styles.textNormal}>&</Text>
+          <Text style={styles.textBold}> Privacy Policy</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -140,20 +142,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 16,
   },
-  text1: {
+  textNormal: {
     fontSize: 12,
     color: COLORS.tertiary,
   },
-  text2: {
-    fontSize: 12,
-    fontWeight: "600",
-    color: COLORS.primary,
-  },
-  text3: {
-    fontSize: 12,
-    color: COLORS.tertiary,
-  },
-  text4: {
+  textBold: {
     fontSize: 12,
     fontWeight: "600",
     color: COLORS.primary,
