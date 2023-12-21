@@ -123,7 +123,7 @@ const Otp = () => {
           </View>
           <View style={styles.resendText}>
             <Text style={{ fontStyle: "italic" }}>
-              OTP not received? Resend in sec
+              OTP not received? Resend in {count} sec
             </Text>
           </View>
         </View>
