@@ -7,6 +7,27 @@ import OtpIcon from "../../assets/SVG/otpIcon";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const Otp = () => {
+  const et1 = useRef(); //editText
+  const et2 = useRef();
+  const et3 = useRef();
+  const et4 = useRef();
+  const et5 = useRef();
+  const et6 = useRef();
+
+  const [isPressed, setIsPressed] = useState();
+  const handlePress = () => {
+    setIsPressed(!isPressed);
+  };
+  const [count, setCount] = useState(60);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (count == 0) {
+        clearInterval(interval);
+      } else {
+        setCount(count - 1);
+      }
+    }, 1000);
+  }, [count]);
   return (
     <SafeAreaProvider>
       <LinearGradient colors={["#ffe0e3", "#fff"]} useAngle={true} angle={180}>
@@ -22,28 +43,107 @@ const Otp = () => {
       </LinearGradient>
       <View style={styles.bottomContainer}>
         <View>
-          <View style={styles.otpLayoutParent}>
-            <View style={styles.otpLayout} />
-            <View style={styles.otpLayout} />
-            <View style={styles.otpLayout} />
-            <View style={styles.otpLayout} />
-            <View style={styles.otpLayout} />
-            <View style={styles.otpLayout} />
+          <View style={styles.otpView}>
+            <TextInput
+              ref={et1}
+              style={styles.inputView}
+              keyboardType="number-pad"
+              maxLength={1}
+              onChangeText={(txt) => {
+                if (txt.length >= 1) {
+                  et2.current.focus();
+                }
+              }}
+            />
+            <TextInput
+              ref={et2}
+              style={styles.inputView}
+              keyboardType="number-pad"
+              maxLength={1}
+              onChangeText={(txt) => {
+                if (txt.length >= 1) {
+                  et3.current.focus();
+                } else if (txt.length < 1) {
+                  et1.current.focus();
+                }
+              }}
+            />
+            <TextInput
+              ref={et3}
+              style={styles.inputView}
+              keyboardType="number-pad"
+              maxLength={1}
+              onChangeText={(txt) => {
+                if (txt.length >= 1) {
+                  et4.current.focus();
+                } else if (txt.length < 1) {
+                  et2.current.focus();
+                }
+              }}
+            />
+            <TextInput
+              ref={et4}
+              style={styles.inputView}
+              keyboardType="number-pad"
+              maxLength={1}
+              onChangeText={(txt) => {
+                if (txt.length >= 1) {
+                  et5.current.focus();
+                } else if (txt.length < 1) {
+                  et3.current.focus();
+                }
+              }}
+            />
+            <TextInput
+              ref={et5}
+              style={styles.inputView}
+              keyboardType="number-pad"
+              maxLength={1}
+              onChangeText={(txt) => {
+                if (txt.length >= 1) {
+                  et6.current.focus();
+                } else if (txt.length < 1) {
+                  et4.current.focus();
+                }
+              }}
+            />
+            <TextInput
+              ref={et6}
+              style={styles.inputView}
+              keyboardType="number-pad"
+              maxLength={1}
+              onChangeText={(txt) => {
+                if (txt.length >= 1) {
+                  et6.current.focus();
+                } else if (txt.length < 1) {
+                  et5.current.focus();
+                }
+              }}
+            />
           </View>
           <View style={styles.resendText}>
-            <Text>OTP not received? Resend in 00:58 sec</Text>
+            <Text style={{ fontStyle: "italic" }}>
+              OTP not received? Resend in sec
+            </Text>
           </View>
         </View>
-        <View style={styles.PrimaryBtn}>
-          <View style={styles.BtnText}>
-            <Text style={styles.proceed}>Sign In</Text>
+        <TouchableOpacity onPress={handlePress}>
+          <View style={styles.PrimaryBtn}>
+            <View
+              style={[
+                styles.BtnText,
+                { backgroundColor: isPressed ? "#004F84" : "#007DD0" },
+              ]}
+            >
+              <Text style={styles.proceed}>Sign In</Text>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
         <View style={styles.footerParent}>
-          <Text style={styles.text1}>I agree to Qur8's </Text>
-          <Text style={styles.text2}>Terms & Conditions </Text>
-          <Text style={styles.text3}>&</Text>
-          <Text style={styles.text4}> Privacy Policy</Text>
+          <Text style={styles.textNormal}>I agree to Qur8's </Text>
+          <Text style={styles.textBold}>Terms & Conditions </Text>
+          <Text style={styles.textNormal}>&</Text>
+          <Text style={styles.textBold}> Privacy Policy</Text>
         </View>
       </View>
     </SafeAreaProvider>
@@ -84,19 +184,25 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     paddingRight: 12,
   },
-  otpLayoutParent: {
+  otpView: {
+    width: "100",
+    justifyContent: "center",
+    alignItems: "center",
     flexDirection: "row",
+    marginTop: 10,
     justifyContent: "space-evenly",
   },
-  otpLayout: {
+  inputView: {
     height: 54,
     width: 47,
     borderWidth: 1,
+    borderRadius: 12,
     borderColor: COLORS.tertiary,
     borderStyle: "solid",
     backgroundColor: COLORS.white,
-    borderRadius: 12,
-    overflow: "hidden",
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: 400,
   },
   resendText: {
     paddingTop: 12,
@@ -142,11 +248,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: COLORS.primary,
   },
-  text3: {
+  textNormal: {
     fontSize: 12,
     color: COLORS.tertiary,
   },
-  text4: {
+  textBold: {
     fontSize: 12,
     fontWeight: "600",
     color: COLORS.primary,
