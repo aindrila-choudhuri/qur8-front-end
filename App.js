@@ -13,7 +13,6 @@ import {
 import StackNavigator from './src/Navigators/StackNavigator';
 
 export default function App() {
-
   let [fontsLoaded] = useFonts({
     IBMPlexSerif_100Thin,
     IBMPlexSerif_200ExtraLight,
@@ -25,13 +24,20 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return null;
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
-
-
-  return (
-    <StackNavigator/>
-  );
+  return <StackNavigator />;
 }
 
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
