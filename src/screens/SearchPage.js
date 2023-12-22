@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar, TextInput, View, TouchableOpacity, Text, ScrollView, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import Loading from '../components/Loading';
 import Card from '../components/Card';
 import data from '../json/data.json'
@@ -30,7 +29,7 @@ const SearchPage = () => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
 
             <View
                 style={[
@@ -75,7 +74,7 @@ const SearchPage = () => {
                     </View>
                 </ScrollView>
             )}
-        </SafeAreaView>
+        </View>
     );
 };
 

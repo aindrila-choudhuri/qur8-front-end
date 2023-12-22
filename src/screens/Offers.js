@@ -1,12 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Offers = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.text}>Offers</Text>
-    </SafeAreaView>
+    </View>
   );
 };
 
