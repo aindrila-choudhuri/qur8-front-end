@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, SafeAreaView, TextInput } from "react-native";
 import React from "react";
-import { COLORS, FONT } from "../../constants";
+import { COLOURS, FONT } from "../../constants";
 import { useFonts } from "expo-font";
 import SignInIcon from "../../assets/SVG/signinIcon";
 import ProceedIcon from "../../assets/SVG/proceedIcon";
@@ -16,7 +16,7 @@ const SignIn = () => {
 
   return (
     <SafeAreaView>
-      <LinearGradient colors={["#e0fdff", "#fff"]} useAngle={true} angle={180}>
+      <LinearGradient COLOURS={["#e0fdff", "#fff"]} useAngle={true} angle={180}>
         <View style={styles.downPop}>
           <View style={styles.signLeft}>
             <Text style={styles.HeadText}>Sign In</Text>
@@ -73,14 +73,14 @@ const styles = StyleSheet.create({
   },
   HeadText: {
     fontSize: 32,
-    color: COLORS.primary,
+    color: COLOURS.primary,
     textAlign: "left",
     alignSelf: "stretch",
     fontWeight: "bold",
   },
   signIntro: {
     fontSize: 12,
-    color: COLORS.tertiary,
+    color: COLOURS.tertiary,
     marginTop: 8,
   },
   SignInIcon: {
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#fff",
     borderStyle: "solid",
-    borderColor: COLORS.tertiary,
+    borderColor: COLOURS.tertiary,
     color: "#557184",
   },
   PrimaryBtn: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   BtnText: {
     borderRadius: 12,
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLOURS.primary,
     flex: 1,
     height: 52,
     justifyContent: "center",
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   },
   proceed: {
     fontWeight: "600",
-    color: COLORS.white,
+    color: COLOURS.white,
   },
   footerParent: {
     flex: 1,
@@ -144,12 +144,12 @@ const styles = StyleSheet.create({
   },
   textNormal: {
     fontSize: 12,
-    color: COLORS.tertiary,
+    color: COLOURS.tertiary,
   },
   textBold: {
     fontSize: 12,
     fontWeight: "600",
-    color: COLORS.primary,
+    color: COLOURS.primary,
   },
 });
 export default SignIn;

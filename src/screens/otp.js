@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, SafeAreaView, TextInput } from "react-native";
 import React from "react";
-import { COLORS, FONT } from "../../constants";
+import { COLOURS, FONT } from "../../constants";
 import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import OtpIcon from "../../assets/SVG/otpIcon";
@@ -30,7 +30,7 @@ const Otp = () => {
   }, [count]);
   return (
     <SafeAreaProvider>
-      <LinearGradient colors={["#ffe0e3", "#fff"]} useAngle={true} angle={180}>
+      <LinearGradient COLOURS={["#ffe0e3", "#fff"]} useAngle={true} angle={180}>
         <View style={styles.downPop}>
           <View style={styles.otpLeft}>
             <Text style={styles.HeadText}>Enter OTP</Text>
@@ -164,14 +164,14 @@ const styles = StyleSheet.create({
   },
   HeadText: {
     fontSize: 32,
-    color: COLORS.primary,
+    color: COLOURS.primary,
     textAlign: "left",
     alignSelf: "stretch",
     fontWeight: "bold",
   },
   otpIntro: {
     fontSize: 12,
-    color: COLORS.tertiary,
+    color: COLOURS.tertiary,
     marginTop: 8,
   },
   OtpIcon: {
@@ -197,9 +197,9 @@ const styles = StyleSheet.create({
     width: 47,
     borderWidth: 1,
     borderRadius: 12,
-    borderColor: COLORS.tertiary,
+    borderColor: COLOURS.tertiary,
     borderStyle: "solid",
-    backgroundColor: COLORS.white,
+    backgroundColor: COLOURS.white,
     textAlign: "center",
     fontSize: 18,
     fontWeight: 400,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   },
   BtnText: {
     borderRadius: 12,
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLOURS.primary,
     flex: 1,
     height: 52,
     justifyContent: "center",
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
 
   proceed: {
     fontWeight: "600",
-    color: COLORS.white,
+    color: COLOURS.white,
   },
   footerParent: {
     flex: 1,
@@ -241,21 +241,21 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontSize: 12,
-    color: COLORS.tertiary,
+    color: COLOURS.tertiary,
   },
   text2: {
     fontSize: 12,
     fontWeight: "600",
-    color: COLORS.primary,
+    color: COLOURS.primary,
   },
   textNormal: {
     fontSize: 12,
-    color: COLORS.tertiary,
+    color: COLOURS.tertiary,
   },
   textBold: {
     fontSize: 12,
     fontWeight: "600",
-    color: COLORS.primary,
+    color: COLOURS.primary,
   },
 });
 export default Otp;

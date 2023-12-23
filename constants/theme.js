@@ -1,4 +1,4 @@
-const COLORS = {
+const COLOURS = {
   primary: "#007DD0",
   secondary: "#004F84",
   tertiary: "#557184",
@@ -27,4 +27,4 @@ const SIZES = {
   xxLarge: 32,
 };
 
-export { COLORS, FONT, SIZES };
+export { COLOURS, FONT, SIZES };
