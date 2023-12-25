@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Styles } from '../constants/Styles';
 
 
 const Card = ({data}) => {
   return (
     <View style={styles.cardContainer}>
-      <Text style={styles.titleText}>{data.title}</Text>
+      <Text style={[Styles.mdSemiBold ,styles.titleText]}>{data.title}</Text>
       <View style={styles.rowContainer}>
         <Text style={styles.infoText}>{data.flats}</Text>
         <Text style={styles.dot}>•</Text>
@@ -43,8 +44,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: '#004F84',
-    fontSize: 20,
-    fontWeight: '800',
+    fontSize: 19,
     marginBottom: 5,
   },
   rowContainer: {

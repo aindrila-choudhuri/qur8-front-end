@@ -8,6 +8,7 @@ import Card from '../components/Card';
 import { LocalSvg } from 'react-native-svg';
 import data from '../json/data.json';
 import { useNavigation } from '@react-navigation/native';
+import { Styles } from '../constants/Styles';
 
 const Home = () => {
     const [isFocused, setIsFocused] = useState(false);
@@ -67,7 +68,7 @@ const Home = () => {
                 <ScrollView contentContainerStyle={styles.scrollViewContent}>
                     {showData.length > 0 ? (
                         <View>
-                            <Text style={styles.spacesTitle}>Spaces</Text>
+                            <Text style={[Styles.xxlBoldText, styles.spacesTitle ]}>Spaces</Text>
                             {showData.map((item) => (
                                 <Card key={item.id} data={item} />
                             ))}
@@ -123,9 +124,8 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     spacesTitle: {
-        fontSize: 24,
+        fontSize: 30,
         color: '#004F84',
-        fontWeight: '700',
         marginTop: 10,
     },
 });
