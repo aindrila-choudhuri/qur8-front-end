@@ -1,4 +1,4 @@
-import { PixelRatio } from "react-native";
+import { PixelRatio } from 'react-native';
 
 export const getFontSize = (size) => {
   const ratio = PixelRatio.get();
@@ -7,7 +7,7 @@ export const getFontSize = (size) => {
   return Math.round(baseFontSize + adjustedSize);
 };
 
-export function scaleFontSize(fontSize) {
+export const scaleFontSize = (fontSize) => {
   const scaledFontSize = fontSize / PixelRatio.getFontScale() - 2;
   return scaledFontSize;
-}
+};
