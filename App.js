@@ -11,6 +11,9 @@ import {
   IBMPlexSerif_700Bold,
 } from '@expo-google-fonts/ibm-plex-serif';
 import StackNavigator from './src/Navigators/StackNavigator';
+import Navigator from './src/Navigators/Navigator';
+import { Provider } from "react-redux";
+import { store } from "./src/redux/store.js";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -31,7 +34,14 @@ export default function App() {
     );
   }
 
-  return <StackNavigator />;
+  return (
+    <>
+      <Provider store={store}>
+        <Navigator />
+        
+      </Provider>
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
