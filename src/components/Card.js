@@ -1,11 +1,26 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { useSelector } from "react-redux";
 
 import { Styles } from "../constants/Styles";
+import { selectIsLoggedIn } from "../redux/slices/authSlices";
 
 const Card = ({ data }) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const navigation = useNavigation();
+  const SignInOpen = () => {
+    if (isLoggedIn) {
+      // User is logged in, navigate to the desired page
+      navigation.navigate("Offers"); //for now just for example gave offers page link
+    } else {
+      // User is not logged in, then open sign in page
+      navigation.navigate("SignIn");
+    }
+  };
   return (
-    <View style={styles.cardContainer}>
+    <Pressable onPress={SignInOpen} style={styles.cardContainer}>
       <Text style={[Styles.mdSemiBold, styles.titleText]}>{data.title}</Text>
       <View style={styles.rowContainer}>
         <Text style={styles.infoText}>{data.flats}</Text>
@@ -22,7 +37,7 @@ const Card = ({ data }) => {
         <Text style={styles.priceText}>{data.maxPrice}</Text>
         <Text style={styles.campaignText}> - Campaign Type</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

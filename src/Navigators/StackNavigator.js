@@ -10,6 +10,8 @@ import "react-native-gesture-handler";
 import BottomTabNavigator from "./BottomTab";
 import Home from "../screens/Home";
 import SearchPage from "../screens/SearchPage";
+import OtpScreen from "../screens/otp";
+import SignInScreen from "../screens/signin";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +39,16 @@ export default function StackNavigator() {
           options={{ headerShown: false }}
           name="BottomTab"
           component={BottomTabNavigator}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="SignIn"
+          component={SignInScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Otp"
+          component={OtpScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

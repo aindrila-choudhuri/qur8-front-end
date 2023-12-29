@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import OtpIcon from "../../assets/SVG/otpIcon";
-import { COLOURS } from "../constants";
+import { COLOURS} from "../constants";
 
 const OtpScreen = () => {
   const inputRefs = Array.from({ length: 6 }, () => useRef()); // Array of refs for TextInput
@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
   },
   otpView: {
     width: "100%",
-    justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     marginTop: 10,

@@ -13,7 +13,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LocalSvg } from "react-native-svg";
+import { Provider } from "react-redux";
 
+import { store } from "../../src/redux/store";
 import Card from "../components/Card";
 import { Styles } from "../constants/Styles";
 import data from "../json/data.json";
@@ -40,52 +42,54 @@ const Home = () => {
       source={require("../../assets/gradient.png")}
       style={styles.backgroundImage}
     >
-      <SafeAreaView style={styles.container}>
-        <TouchableOpacity
-          style={[styles.searchContainer, { borderColor: "#557184" }]}
-          onPress={handlePress}
-        >
-          <View style={styles.searchIcon}>
-            <LocalSvg
-              width={36}
-              height={36}
-              asset={require("../../assets/search1.svg")}
-              style={styles.searchIconSvg}
-            />
-          </View>
-
-          <View style={styles.searchContent}>
-            <EvilIcons
-              name="search"
-              size={24}
-              color="#557184"
-              style={styles.icon}
-            />
-            <Text style={styles.searchPlaceholder}>Search</Text>
-          </View>
-          <View style={styles.searchIcon}>
-            <LocalSvg
-              width={36}
-              height={36}
-              asset={require("../../assets/search2.svg")}
-              style={styles.searchIconSvg}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <ScrollView contentContainerStyle={styles.scrollViewContent}>
-          {showData.length > 0 ? (
-            <View>
-              <Text style={[Styles.xxlBoldText, styles.spacesTitle]}>
-                Spaces
-              </Text>
-              {showData.map((item) => (
-                <Card key={item.id} data={item} />
-              ))}
+      <Provider store={store}>
+        <SafeAreaView style={styles.container}>
+          <TouchableOpacity
+            style={[styles.searchContainer, { borderColor: "#557184" }]}
+            onPress={handlePress}
+          >
+            <View style={styles.searchIcon}>
+              <LocalSvg
+                width={36}
+                height={36}
+                asset={require("../../assets/search1.svg")}
+                style={styles.searchIconSvg}
+              />
             </View>
-          ) : null}
-        </ScrollView>
-      </SafeAreaView>
+
+            <View style={styles.searchContent}>
+              <EvilIcons
+                name="search"
+                size={24}
+                color="#557184"
+                style={styles.icon}
+              />
+              <Text style={styles.searchPlaceholder}>Search</Text>
+            </View>
+            <View style={styles.searchIcon}>
+              <LocalSvg
+                width={36}
+                height={36}
+                asset={require("../../assets/search2.svg")}
+                style={styles.searchIconSvg}
+              />
+            </View>
+          </TouchableOpacity>
+
+          <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            {showData.length > 0 ? (
+              <View>
+                <Text style={[Styles.xxlBoldText, styles.spacesTitle]}>
+                  Spaces
+                </Text>
+                {showData.map((item) => (
+                  <Card key={item.id} data={item} />
+                ))}
+              </View>
+            ) : null}
+          </ScrollView>
+        </SafeAreaView>
+      </Provider>
     </ImageBackground>
   );
 };
