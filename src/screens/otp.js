@@ -1,3 +1,5 @@
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useRef, useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,39 +8,32 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { COLOURS, FONT } from "../constants";
 
-import React, {useRef, useState, useEffect}  from "react";
-import { LinearGradient } from "expo-linear-gradient";
 import OtpIcon from "../../assets/SVG/otpIcon";
+import { COLOURS } from "../constants";
 
 const OtpScreen = () => {
-     const et1 = useRef(); //editText
-     const et2 = useRef();
-     const et3 = useRef();
-     const et4 = useRef();
-     const et5 = useRef();
-     const et6 = useRef();
-     const [isPressed, setIsPressed] = useState();
-     const handlePress = () => {
-       setIsPressed(!isPressed);
-     };
-     const [count, setCount] = useState(60);
-     useEffect(() => {
-       const interval = setInterval(() => {
-         if (count === 0) {
-           clearInterval(interval);
-         } else {
-           setCount(count - 1);
-         }
-       }, 1000);
-     }, [count]);
+  const inputRefs = Array.from({ length: 6 }, () => useRef()); // Array of refs for TextInput
+  const [isPressed, setIsPressed] = useState(false);
+  const handlePress = () => {
+    setIsPressed(!isPressed);
+  };
+  const [count, setCount] = useState(60);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (count === 0) {
+        clearInterval(interval);
+      } else {
+        setCount(count - 1);
+      }
+    }, 1000);
+  }, [count]);
   return (
     <SafeAreaView>
       <LinearGradient
         colors={["#ffe0e3", "#F3F4F8"]}
         locations={[0, 1]}
-        useAngle={true}
+        useAngle
         angle={180}
       >
         <View style={styles.downPop}>
@@ -54,86 +49,26 @@ const OtpScreen = () => {
       <View style={styles.bottomContainer}>
         <View>
           <View style={styles.otpView}>
-            <TextInput
-              ref={et1}
-              style={styles.inputView}
-              keyboardType="number-pad"
-              maxLength={1}
-              onChangeText={(txt) => {
-                if (txt.length >= 1) {
-                  et2.current.focus();
-                }
-              }}
-            />
-            <TextInput
-              ref={et2}
-              style={styles.inputView}
-              keyboardType="number-pad"
-              maxLength={1}
-              onChangeText={(txt) => {
-                if (txt.length >= 1) {
-                  et3.current.focus();
-                } else if (txt.length < 1) {
-                  et1.current.focus();
-                }
-              }}
-            />
-            <TextInput
-              ref={et3}
-              style={styles.inputView}
-              keyboardType="number-pad"
-              maxLength={1}
-              onChangeText={(txt) => {
-                if (txt.length >= 1) {
-                  et4.current.focus();
-                } else if (txt.length < 1) {
-                  et2.current.focus();
-                }
-              }}
-            />
-            <TextInput
-              ref={et4}
-              style={styles.inputView}
-              keyboardType="number-pad"
-              maxLength={1}
-              onChangeText={(txt) => {
-                if (txt.length >= 1) {
-                  et5.current.focus();
-                } else if (txt.length < 1) {
-                  et3.current.focus();
-                }
-              }}
-            />
-            <TextInput
-              ref={et5}
-              style={styles.inputView}
-              keyboardType="number-pad"
-              maxLength={1}
-              onChangeText={(txt) => {
-                if (txt.length >= 1) {
-                  et6.current.focus();
-                } else if (txt.length < 1) {
-                  et4.current.focus();
-                }
-              }}
-            />
-            <TextInput
-              ref={et6}
-              style={styles.inputView}
-              keyboardType="number-pad"
-              maxLength={1}
-              onChangeText={(txt) => {
-                if (txt.length >= 1) {
-                  et6.current.focus();
-                } else if (txt.length < 1) {
-                  et5.current.focus();
-                }
-              }}
-            />
+            {inputRefs.map((ref, index) => (
+              <TextInput
+                key={index}
+                ref={ref}
+                style={styles.inputView}
+                keyboardType="number-pad"
+                maxLength={1}
+                onChangeText={(txt) => {
+                  if (txt.length >= 1 && index < inputRefs.length - 1) {
+                    inputRefs[index + 1].current.focus();
+                  } else if (txt.length < 1 && index > 0) {
+                    inputRefs[index - 1].current.focus();
+                  }
+                }}
+              />
+            ))}
           </View>
           <View style={styles.resendText}>
             <Text style={{ fontStyle: "italic" }}>
-              OTP not received? Resend in secs
+              OTP not received? Resend in {count} secs
             </Text>
           </View>
         </View>
@@ -163,7 +98,6 @@ const OtpScreen = () => {
 export default OtpScreen;
 
 const styles = StyleSheet.create({
-   
   downPop: {
     flexDirection: "row",
     borderTopLeftRadius: 12,

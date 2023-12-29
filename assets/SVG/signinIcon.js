@@ -1,12 +1,7 @@
 import * as React from "react";
 import Svg, { Path, Defs, Pattern, Use, Image } from "react-native-svg";
 const signInIconn = (props) => (
-  <Svg
-    width={102}
-    height={93}
-    fill="none"
-    {...props}
-  >
+  <Svg width={102} height={93} fill="none" {...props}>
     <Path fill="url(#a)" d="M0 .652h92v92H0z" />
     <Defs>
       <Pattern

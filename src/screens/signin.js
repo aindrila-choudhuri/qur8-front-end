@@ -1,3 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 import * as React from "react";
 import {
   View,
@@ -7,11 +9,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { COLOURS, FONT } from "../constants";
-import SignInIcon from "../../assets/SVG/signinIcon";
-import { LinearGradient } from "expo-linear-gradient";
+
 import ProceedIcon from "../../assets/SVG/proceedIcon";
+import SignInIcon from "../../assets/SVG/signinIcon";
+import { COLOURS } from "../constants";
 
 const SignInScreen = () => {
   const [number, onChangeNumber] = React.useState("");

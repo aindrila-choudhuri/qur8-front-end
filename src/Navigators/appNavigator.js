@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 
 import SearchPlacesScreen from "../screens/SearchPlaces";
 
@@ -13,5 +12,3 @@ export default function AppNavigator() {
     </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({});

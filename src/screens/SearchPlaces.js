@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import MapView from "react-native-maps";
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,9 +6,11 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import { COLOURS } from "../constants";
-import ProceedIcon from "../../assets/SVG/proceedIcon";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import MapView from "react-native-maps";
 
+import ProceedIcon from "../../assets/SVG/proceedIcon";
+import { COLOURS } from "../constants";
 
 const SearchPlacesScreen = () => {
   const [location, setLocation] = useState({
@@ -36,28 +36,10 @@ const SearchPlacesScreen = () => {
           key: "AIzaSyD26fjxZNc52YBtoVHlgpxAjHH1Jq5Jw3o",
           language: "en",
         }}
-        styles={{
-          container: {
-            flex: 0,
-          },
-          textInput: {
-            backgroundColor: COLOURS.gray2,
-            color: COLOURS.secondary,
-            fontStyle: "italic",
-            fontSize: 16,
-            paddingLeft: 35,
-            borderRadius: 12,
-            borderStyle: "solid",
-          },
-          textInputContainer: {
-            color: "#004F84",
-            padding: 8,
-            backgroundColor: "#fff",
-          },
-        }}
+        styles={mapStyle}
       />
 
-      <MapView showsUserLocation={true} style={styles.map} region={location} />
+      <MapView showsUserLocation style={styles.map} region={location} />
       <View style={styles.absoluteBox}>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>
@@ -74,6 +56,26 @@ const SearchPlacesScreen = () => {
 
 export default SearchPlacesScreen;
 
+const mapStyle = {
+  container: {
+    flex: 0,
+  },
+  textInput: {
+    backgroundColor: COLOURS.gray2,
+    color: COLOURS.secondary,
+    fontStyle: "italic",
+    fontSize: 16,
+    paddingLeft: 35,
+    borderRadius: 12,
+    borderStyle: "solid",
+  },
+  textInputContainer: {
+    color: "#004F84",
+    padding: 8,
+    backgroundColor: "#fff",
+  },
+};
+
 const styles = StyleSheet.create({
   map: {
     flex: 1,
@@ -84,13 +86,13 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   button: {
-    flexDirection:'row',
+    flexDirection: "row",
     backgroundColor: COLOURS.primary,
     paddingVertical: 16,
     paddingHorizontal: 16,
     margin: 16,
     alignItems: "center",
-    justifyContent:'center',
+    justifyContent: "center",
     borderRadius: 8,
   },
   buttonText: {
