@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 const Offers = () => {
   return (
@@ -12,12 +12,12 @@ const Offers = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
   },
   text: {
-    color: 'black',
+    color: "black",
     fontSize: 16,
   },
 });
