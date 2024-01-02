@@ -12,10 +12,12 @@ import {
   Platform,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
 
 import Card from "../components/Card";
 import Loading from "../components/Loading";
 import data from "../json/data.json";
+import { store } from "../redux/store";
 
 const SearchPage = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -40,54 +42,56 @@ const SearchPage = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View
-        style={[
-          styles.searchContainer,
-          { borderColor: isFocused ? "#007DD0" : "#557184" },
-        ]}
-      >
-        <TouchableOpacity onPress={handleGoBack}>
-          <AntDesign
-            name="arrowleft"
-            size={24}
-            color="#557184"
-            style={styles.icon}
-          />
-        </TouchableOpacity>
-        <TextInput
-          placeholder="Search spaces, offers and deals"
-          placeholderTextColor="#557184"
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
+        <View
           style={[
-            styles.input,
-            {
-              fontStyle: text ? "normal" : "italic",
-              fontWeight: text ? "500" : "normal",
-            },
+            styles.searchContainer,
+            { borderColor: isFocused ? "#007DD0" : "#557184" },
           ]}
-          value={text}
-          onChangeText={(inputText) => setText(inputText)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          clearTextOnFocus
-        />
-        {text.length > 0 && (
-          <TouchableOpacity onPress={clearText} style={styles.clearButton}>
-            <Text style={styles.clearButtonText}>Clear</Text>
+        >
+          <TouchableOpacity onPress={handleGoBack}>
+            <AntDesign
+              name="arrowleft"
+              size={24}
+              color="#557184"
+              style={styles.icon}
+            />
           </TouchableOpacity>
+          <TextInput
+            placeholder="Search spaces, offers and deals"
+            placeholderTextColor="#557184"
+            style={[
+              styles.input,
+              {
+                fontStyle: text ? "normal" : "italic",
+                fontWeight: text ? "500" : "normal",
+              },
+            ]}
+            value={text}
+            onChangeText={(inputText) => setText(inputText)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            clearTextOnFocus
+          />
+          {text.length > 0 && (
+            <TouchableOpacity onPress={clearText} style={styles.clearButton}>
+              <Text style={styles.clearButtonText}>Clear</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+        {!isFocused && <Loading />}
+        {showData && text.length > 0 && (
+          <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <View>
+              {showData.map((item) => (
+                <Card key={item.id} data={item} />
+              ))}
+            </View>
+          </ScrollView>
         )}
-      </View>
-      {!isFocused && <Loading />}
-      {showData && text.length > 0 && (
-        <ScrollView contentContainerStyle={styles.scrollViewContent}>
-          <View>
-            {showData.map((item) => (
-              <Card key={item.id} data={item} />
-            ))}
-          </View>
-        </ScrollView>
-      )}
-    </SafeAreaView>
+      </SafeAreaView>
+    </Provider>
   );
 };
 

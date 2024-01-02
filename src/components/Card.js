@@ -6,10 +6,15 @@ import { useSelector } from "react-redux";
 import { Styles } from "../constants/Styles";
 import { selectIsLoggedIn } from "../redux/slices/authSlices";
 
-const Card = ({ data }) => {
+const Card = ({ data, props }) => {
+  const toggleSheet= props;
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const navigation = useNavigation();
+  const handleSignIn=()=>{
+
+  }
+
   const SignInOpen = () => {
     if (isLoggedIn) {
       // User is logged in, navigate to the desired page
@@ -20,7 +25,7 @@ const Card = ({ data }) => {
     }
   };
   return (
-    <Pressable onPress={SignInOpen} style={styles.cardContainer}>
+    <Pressable onPress={toggleSheet} style={styles.cardContainer}>
       <Text style={[Styles.mdSemiBold, styles.titleText]}>{data.title}</Text>
       <View style={styles.rowContainer}>
         <Text style={styles.infoText}>{data.flats}</Text>

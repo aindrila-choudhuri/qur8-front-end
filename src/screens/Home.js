@@ -10,6 +10,8 @@ import {
   Text,
   ScrollView,
   Platform,
+  Pressable,
+  Modal,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LocalSvg } from "react-native-svg";
@@ -19,6 +21,7 @@ import { store } from "../../src/redux/store";
 import Card from "../components/Card";
 import { Styles } from "../constants/Styles";
 import data from "../json/data.json";
+import SignInScreen from "./signin";
 
 const Home = () => {
   const [text] = useState("");
@@ -28,7 +31,7 @@ const Home = () => {
 
   useEffect(() => {
     const filteredData = data.filter((item) =>
-      item.title.toLowerCase().includes(text.toLowerCase()),
+      item.title.toLowerCase().includes(text.toLowerCase())
     );
     setShowData(filteredData);
   }, [text]);
@@ -37,6 +40,11 @@ const Home = () => {
     navigation.navigate("SearchPage");
   };
 
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const toggleSheet = () => {
+    setModalVisible(!modalVisible);
+  };
   return (
     <ImageBackground
       source={require("../../assets/gradient.png")}
@@ -88,6 +96,25 @@ const Home = () => {
               </View>
             ) : null}
           </ScrollView>
+          <View
+            style={{
+              height: 325,
+              zIndex: 1,
+              bottom: 0,
+              position: "absolute",
+              width: "100%",
+            }}
+          >
+            {modalVisible && <SignInScreen />}
+            {/* <Modal
+              toggleSheet={toggleSheet}
+              animationType="slide"
+              visible={modalVisible}
+             
+            > */}
+
+            {/* </Modal> */}
+          </View>
         </SafeAreaView>
       </Provider>
     </ImageBackground>

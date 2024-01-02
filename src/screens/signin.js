@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   bottomContainer: {
+    backgroundColor:'#F3F4F8',
     paddingTop: 24,
     paddingBottom: 36,
     paddingLeft: 16,

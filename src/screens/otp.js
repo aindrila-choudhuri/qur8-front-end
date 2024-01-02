@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import OtpIcon from "../../assets/SVG/otpIcon";
-import { COLOURS} from "../constants";
+import { COLOURS } from "../constants";
 
 const OtpScreen = () => {
   const inputRefs = Array.from({ length: 6 }, () => useRef()); // Array of refs for TextInput
