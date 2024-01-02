@@ -18,6 +18,11 @@ const SignInScreen = () => {
   const [number, onChangeNumber] = React.useState("");
   const navigation = useNavigation();
   const handlePress = () => {
+    if (!number || number.length !== 10) {
+      // Display an alert or take any other action
+      alert("Please enter your 10 digit phone number");
+      return; // Do not proceed further
+    }
     navigation.navigate("Otp");
   };
   return (
