@@ -51,7 +51,6 @@ const SearchPage = () => {
           <AntDesign
             name="arrowleft"
             size={24}
-            color="#557184"
             style={styles.icon}
           />
         </TouchableOpacity>
@@ -107,6 +106,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
+    color:"#557184",
     paddingLeft: 6,
   },
   input: {

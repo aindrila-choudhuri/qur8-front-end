@@ -58,7 +58,6 @@ const Home = () => {
             <EvilIcons
               name="search"
               size={24}
-              color="#557184"
               style={styles.icon}
             />
             <Text style={styles.searchPlaceholder}>Search</Text>
@@ -120,6 +119,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
+    color:"#557184",
     paddingLeft: 6,
   },
   searchPlaceholder: {

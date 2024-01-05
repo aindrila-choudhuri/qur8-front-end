@@ -24,67 +24,51 @@ const Offers = () => {
   return (
     <ImageBackground
       source={require("../../assets/gradient.png")}
-      style={styles.backgroundImage}
+      style={style.backgroundImage}
     >
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={style.container}>
         <TouchableOpacity
-          style={[styles.searchContainer, { borderColor: "#557184" }]}
+          style={[style.searchContainer, Styles.searchContainer]}
         >
-          <View style={styles.searchIcon}>
+          <View style={style.searchIcon}>
             <LocalSvg
               width={36}
               height={36}
               asset={require("../../assets/search1.svg")}
-              style={styles.searchIconSvg}
+              style={style.searchIconSvg}
             />
           </View>
 
-          <View style={styles.searchContent}>
+          <View style={style.searchContent}>
             <EvilIcons
               name="search"
               size={24}
-              color="#557184"
-              style={styles.icon}
+              style={style.icon}
             />
-            <Text style={styles.searchPlaceholder}>Search</Text>
+            <Text style={style.searchPlaceholder}>Search</Text>
           </View>
-          <View style={styles.searchIcon}>
+          <View style={style.searchIcon}>
             <LocalSvg
               width={36}
               height={36}
               asset={require("../../assets/offersSearch.svg")}
-              style={styles.searchIconSvg}
+              style={style.searchIconSvg}
             />
           </View>
         </TouchableOpacity>
 
         <ScrollView
-          contentContainerStyle={styles.scrollViewContent}
+          contentContainerStyle={style.scrollViewContent}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
         >
           <View>
-            <View
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <Text style={[Styles.xxlBoldText, styles.spacesTitle]}>
+            <View style={style.headerContainer}>
+              <Text style={[Styles.xxlBoldText, style.spacesTitle]}>
                 Offers
               </Text>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "#007DD0",
-                  borderRadius: 18,
-                  paddingHorizontal: 10,
-                }}
-              >
-                <Text
-                  style={[Styles.mdSemiBold, { color: "white", fontSize: 12 }]}
-                >
+              <TouchableOpacity style={style.upcomingButton}>
+                <Text style={[Styles.mdSemiBold, style.upcomingButtonText]}>
                   Upcoming: All
                   <AntDesign name="caretdown" size={14} color="white" />
                 </Text>
@@ -92,18 +76,8 @@ const Offers = () => {
             </View>
 
             {/* Campaigns Today */}
-            <View>
-              <Text
-                style={[
-                  Styles.mdText,
-                  {
-                    color: "#557184",
-                    marginTop: 10,
-                    fontStyle: "italic",
-                    textAlign: "center",
-                  },
-                ]}
-              >
+            <View style={style.campaignContainer}>
+              <Text style={[Styles.mdText, style.campaignTitle]}>
                 Campaigns Today
               </Text>
               {todayData.map((item) => (
@@ -112,18 +86,8 @@ const Offers = () => {
             </View>
 
             {/* Campaigns Tomorrow */}
-            <View>
-              <Text
-                style={[
-                  Styles.mdText,
-                  {
-                    color: "#557184",
-                    fontStyle: "italic",
-                    textAlign: "center",
-                    marginTop: 20,
-                  },
-                ]}
-              >
+            <View style={style.campaignContainer}>
+              <Text style={[Styles.mdText, style.campaignTitle]}>
                 Campaigns Tomorrow
               </Text>
               {tomorrowData.map((item) => (
@@ -137,7 +101,7 @@ const Offers = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   backgroundImage: {
     flex: 1,
   },
@@ -170,6 +134,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
+    color: "#557184",
     paddingLeft: 6,
   },
   searchPlaceholder: {
@@ -184,6 +149,30 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "#004F84",
     marginTop: 10,
+  },
+  headerContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  upcomingButton: {
+    backgroundColor: "#007DD0",
+    borderRadius: 18,
+    paddingHorizontal: 10,
+  },
+  upcomingButtonText: {
+    color: "white",
+    fontSize: 12,
+  },
+  campaignContainer: {
+    marginTop: 10,
+  },
+  campaignTitle: {
+    color: "#557184",
+    marginTop: 10,
+    fontStyle: "italic",
+    textAlign: "center",
   },
 });
 
