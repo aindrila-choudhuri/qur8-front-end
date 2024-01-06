@@ -10,8 +10,6 @@ import {
   Text,
   ScrollView,
   Platform,
-  Pressable,
-  Modal,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LocalSvg } from "react-native-svg";
@@ -19,9 +17,9 @@ import { Provider } from "react-redux";
 
 import { store } from "../../src/redux/store";
 import Card from "../components/Card";
+import SignIn from "../components/SignIn";
 import { Styles } from "../constants/Styles";
 import data from "../json/data.json";
-import SignInScreen from "./signin";
 
 const Home = () => {
   const [text] = useState("");
@@ -31,7 +29,7 @@ const Home = () => {
 
   useEffect(() => {
     const filteredData = data.filter((item) =>
-      item.title.toLowerCase().includes(text.toLowerCase())
+      item.title.toLowerCase().includes(text.toLowerCase()),
     );
     setShowData(filteredData);
   }, [text]);
@@ -39,12 +37,7 @@ const Home = () => {
   const handlePress = () => {
     navigation.navigate("SearchPage");
   };
-
   const [modalVisible, setModalVisible] = useState(false);
-
-  const toggleSheet = () => {
-    setModalVisible(!modalVisible);
-  };
   return (
     <ImageBackground
       source={require("../../assets/gradient.png")}
@@ -91,30 +84,17 @@ const Home = () => {
                   Spaces
                 </Text>
                 {showData.map((item) => (
-                  <Card key={item.id} data={item} />
+                  <Card
+                    onButtonPress={() => setModalVisible(true)}
+                    key={item.id}
+                    data={item}
+                  />
                 ))}
               </View>
             ) : null}
           </ScrollView>
-          <View
-            style={{
-              height: 325,
-              zIndex: 1,
-              bottom: 0,
-              position: "absolute",
-              width: "100%",
-            }}
-          >
-            {modalVisible && <SignInScreen />}
-            {/* <Modal
-              toggleSheet={toggleSheet}
-              animationType="slide"
-              visible={modalVisible}
-             
-            > */}
 
-            {/* </Modal> */}
-          </View>
+          <SignIn modalVisible={modalVisible} />
         </SafeAreaView>
       </Provider>
     </ImageBackground>
@@ -122,6 +102,10 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+  modal: {
+    justifyContent: "flex-end",
+    margin: 0,
+  },
   backgroundImage: {
     flex: 1,
   },
