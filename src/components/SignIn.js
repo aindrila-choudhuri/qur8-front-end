@@ -15,11 +15,11 @@ import SignInIcon from "../../assets/SVG/signinIcon";
 import Otp from "../components/Otp";
 import { COLOURS } from "../constants";
 
-const SignIn = ({ modalVisible = false }) => {
+const SignIn = ({ modalVisible, setModalVisible }) => {
   const [number, onChangeNumber] = React.useState("");
 
-  
   // const navigation = useNavigation();
+  
   // const handlePress = () => {
   //   if (!number || number.length !== 10) {
   //     // Display an alert or take any other action
@@ -27,23 +27,19 @@ const SignIn = ({ modalVisible = false }) => {
   //     // Do not proceed further
   //   }
   // };
-  //  const [modalVisible, setModalVisible] = useState(false);
-
-  //  const toggleModal = () => {
-  //    setModalVisible(!modalVisible);
-  //  };
-
-
-
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
   const [showOTP, setShowOTP] = useState(false);
   const handleOtp = () => {
-    // You can perform any additional validation here if needed
     setShowOTP(true);
   };
 
   if (showOTP) {
     // Render OTP component
-    return <Otp />;
+    return (
+      <Otp modalVisible={modalVisible} setModalVisible={setModalVisible} />
+    );
   }
   return (
     <>
@@ -51,9 +47,8 @@ const SignIn = ({ modalVisible = false }) => {
         visible={modalVisible}
         transparent
         swipeDirection="down"
-        // onBackdropPress={() => setModalVisible(false)}
-        // onBackButtonPress={() => setModalVisible(false)}
-        // onSwipeComplete={toggleModal}
+        onBackdropPress={() => toggleModal()}
+        onSwipeComplete={() => toggleModal()}
         animationIn="slideInUp"
         animationOut="slideOutDown"
         animationInTiming={900}

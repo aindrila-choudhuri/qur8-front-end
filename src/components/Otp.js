@@ -12,7 +12,7 @@ import Modal from "react-native-modal";
 import OtpIcon from "../../assets/SVG/otpIcon";
 import { COLOURS } from "../constants";
 
-const Otp = ({ modalVisible }) => {
+const Otp = ({ modalVisible, setModalVisible }) => {
   const inputRefs = Array.from({ length: 6 }, () => useRef()); // Array of refs for TextInput
   const [isPressed, setIsPressed] = useState(false);
   const handlePress = () => {
@@ -28,15 +28,16 @@ const Otp = ({ modalVisible }) => {
       }
     }, 1000);
   }, [count]);
-
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
   return (
     <>
-      {/* <View style={styles.btnContainer}>
-        <Button title="Show Bottom Sheet" onPress={toggleModal} />
-      </View> */}
       <Modal
         visible={modalVisible}
         transparent
+        onBackdropPress={() => toggleModal()} 
+        onSwipeComplete={() => toggleModal()}
         swipeDirection="down"
         animationIn="slideInUp"
         animationOut="slideOutDown"
@@ -51,6 +52,7 @@ const Otp = ({ modalVisible }) => {
           locations={[0, 1]}
           useAngle
           angle={180}
+          style={{ borderTopRightRadius: 20, borderTopLeftRadius: 20 }}
         >
           <View style={styles.downPop}>
             <View style={styles.otpLeft}>
