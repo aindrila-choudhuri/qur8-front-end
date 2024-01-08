@@ -36,7 +36,7 @@ const Otp = ({ modalVisible, setModalVisible }) => {
       <Modal
         visible={modalVisible}
         transparent
-        onBackdropPress={() => toggleModal()} 
+        onBackdropPress={() => toggleModal()}
         onSwipeComplete={() => toggleModal()}
         swipeDirection="down"
         animationIn="slideInUp"

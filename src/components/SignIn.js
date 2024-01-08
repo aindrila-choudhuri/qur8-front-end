@@ -1,4 +1,3 @@
-// import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
@@ -18,15 +17,6 @@ import { COLOURS } from "../constants";
 const SignIn = ({ modalVisible, setModalVisible }) => {
   const [number, onChangeNumber] = React.useState("");
 
-  // const navigation = useNavigation();
-  
-  // const handlePress = () => {
-  //   if (!number || number.length !== 10) {
-  //     // Display an alert or take any other action
-  //     alert("Please enter your 10 digit phone number");
-  //     // Do not proceed further
-  //   }
-  // };
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
@@ -36,7 +26,6 @@ const SignIn = ({ modalVisible, setModalVisible }) => {
   };
 
   if (showOTP) {
-    // Render OTP component
     return (
       <Otp modalVisible={modalVisible} setModalVisible={setModalVisible} />
     );

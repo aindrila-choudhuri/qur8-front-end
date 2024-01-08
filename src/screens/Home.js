@@ -14,11 +14,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LocalSvg } from "react-native-svg";
 import { Provider } from "react-redux";
-import { store } from "../../src/redux/store";
 
+import { store } from "../../src/redux/store";
 import Card from "../components/Card";
 import SignIn from "../components/SignIn";
-
 import { Styles } from "../constants/Styles";
 import data from "../json/data.json";
 
@@ -30,7 +29,7 @@ const Home = () => {
 
   useEffect(() => {
     const filteredData = data.filter((item) =>
-      item.title.toLowerCase().includes(text.toLowerCase())
+      item.title.toLowerCase().includes(text.toLowerCase()),
     );
     setShowData(filteredData);
   }, [text]);
