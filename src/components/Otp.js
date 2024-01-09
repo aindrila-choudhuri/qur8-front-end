@@ -13,7 +13,8 @@ import OtpIcon from "../../assets/SVG/otpIcon";
 import { COLOURS } from "../constants";
 
 const Otp = ({ modalVisible, setModalVisible }) => {
-  const inputRefs = Array.from({ length: 6 }, () => useRef()); // Array of refs for TextInput
+  const inputRefs = Array.from({ length: 6 }, () => useRef());
+  const number = 12324234234;
   const [isPressed, setIsPressed] = useState(false);
   const handlePress = () => {
     setIsPressed(!isPressed);
@@ -57,7 +58,7 @@ const Otp = ({ modalVisible, setModalVisible }) => {
           <View style={styles.downPop}>
             <View style={styles.otpLeft}>
               <Text style={styles.HeadText}>Enter OTP</Text>
-              <Text style={styles.otpIntro}>Enter OTP sent to 7291829947</Text>
+              <Text style={styles.otpIntro}>Enter OTP sent to {number}</Text>
             </View>
             <View style={styles.OtpIcon}>
               <OtpIcon />
@@ -75,7 +76,7 @@ const Otp = ({ modalVisible, setModalVisible }) => {
                   keyboardType="number-pad"
                   maxLength={1}
                   onChangeText={(txt) => {
-                    if (txt.length >= 1 && index < inputRefs.length - 1) {
+                    if (txt.length && index < inputRefs.length - 1) {
                       inputRefs[index + 1].current.focus();
                     } else if (txt.length < 1 && index > 0) {
                       inputRefs[index - 1].current.focus();

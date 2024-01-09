@@ -7,7 +7,6 @@ import { Styles } from "../constants/Styles";
 import { selectIsLoggedIn } from "../redux/slices/authSlices";
 
 const Card = ({ data, onButtonPress }) => {
-  // }
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const navigation = useNavigation();
