@@ -1,11 +1,20 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { useSelector } from "react-redux";
 
 import { Styles } from "../constants/Styles";
+import { selectIsLoggedIn } from "../redux/slices/authSlices";
 
-const Card = ({ data }) => {
+const Card = ({ data, onButtonPress }) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const navigation = useNavigation();
   return (
-    <View style={styles.cardContainer}>
+    <Pressable
+      onPress={isLoggedIn ? () => navigation.navigate("Offers") : onButtonPress}
+      style={styles.cardContainer}
+    >
       <Text style={[Styles.mdSemiBold, styles.titleText]}>{data.title}</Text>
       <View style={styles.rowContainer}>
         <Text style={styles.infoText}>{data.flats}</Text>
@@ -22,7 +31,7 @@ const Card = ({ data }) => {
         <Text style={styles.priceText}>{data.maxPrice}</Text>
         <Text style={styles.campaignText}> - Campaign Type</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
