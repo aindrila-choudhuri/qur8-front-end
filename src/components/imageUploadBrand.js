@@ -1,3 +1,4 @@
+import * as ImagePicker from "expo-image-picker";
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -7,9 +8,9 @@ import {
   Platform,
   Text,
 } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+
 import { COLOURS } from "../constants";
-const ImageUpload = ({ onImageUpload }) => {
+const ImageUploadBrand = ({ onImageUpload }) => {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
@@ -83,10 +84,10 @@ const styles = StyleSheet.create({
   },
 
   uploadedImage: {
-    marginHorizontal: 30,
-    width: 300,
+    marginLeft: 12,
+    width: 338,
     height: 300,
     borderRadius: 12,
   },
 });
-export default ImageUpload;
+export default ImageUploadBrand;
