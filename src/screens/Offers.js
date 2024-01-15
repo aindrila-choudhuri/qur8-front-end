@@ -40,11 +40,7 @@ const Offers = () => {
           </View>
 
           <View style={style.searchContent}>
-            <EvilIcons
-              name="search"
-              size={24}
-              style={style.icon}
-            />
+            <EvilIcons name="search" size={24} style={style.icon} />
             <Text style={style.searchPlaceholder}>Search</Text>
           </View>
           <View style={style.searchIcon}>

@@ -9,7 +9,7 @@ import React from "react";
 import "react-native-gesture-handler";
 import BottomTabNavigator from "./BottomTab";
 import Home from "../screens/Home";
-import OffersRWA from "../screens/OffersRWA";
+import OfferGeneration from "../screens/OfferGeneration";
 import SearchPage from "../screens/SearchPage";
 
 const Stack = createStackNavigator();
@@ -36,8 +36,8 @@ export default function StackNavigator() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="OffersRWA"
-          component={OffersRWA}
+          name="OfferGeneration"
+          component={OfferGeneration}
         />
         <Stack.Screen
           options={{ headerShown: false }}

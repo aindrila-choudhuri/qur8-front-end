@@ -1,17 +1,24 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { useSelector } from "react-redux";
 
 import { Styles } from "../../constants/Styles";
+import { selectIsLoggedIn } from "../../redux/slices/authSlices";
 
-const HomeCard = ({ data }) => {
+const HomeCard = ({ data, onButtonPress }) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   const navigation = useNavigation();
-
-  const handlePress = () => {
-    navigation.navigate("OffersRWA");
-  };
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.cardContainer}>
+    <Pressable
+      onPress={
+        isLoggedIn
+          ? () => navigation.navigate("OfferGeneration")
+          : onButtonPress
+      }
+      style={styles.cardContainer}
+    >
       <Text style={[Styles.mdSemiBold, styles.titleText]}>{data.title}</Text>
       <View style={styles.rowContainer}>
         <Text style={styles.infoText}>{data.flats}</Text>
@@ -28,7 +35,7 @@ const HomeCard = ({ data }) => {
         <Text style={styles.priceText}>{data.maxPrice}</Text>
         <Text style={styles.campaignText}> - Campaign Type</Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

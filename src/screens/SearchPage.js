@@ -85,7 +85,7 @@ const SearchPage = () => {
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <View>
               {showData.map((item) => (
-                <Card key={item.id} data={item} />
+                <HomeCard key={item.id} data={item} />
               ))}
             </View>
           </ScrollView>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    color:"#557184",
+    color: "#557184",
     paddingLeft: 6,
   },
   input: {

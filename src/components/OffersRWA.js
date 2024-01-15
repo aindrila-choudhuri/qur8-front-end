@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function OffersRWA() {
-  return (
-    <div>OffersRWA</div>
-  )
+  return <div>OffersRWA</div>;
 }
 
-export default OffersRWA
+export default OffersRWA;

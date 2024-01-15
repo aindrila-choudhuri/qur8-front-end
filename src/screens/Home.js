@@ -15,8 +15,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { LocalSvg } from "react-native-svg";
 import { Provider } from "react-redux";
 
-import HomeCard from "../components/Card/HomeCard";
 import { store } from "../../src/redux/store";
+import HomeCard from "../components/Card/HomeCard";
 import SignIn from "../components/SignIn";
 import { Styles } from "../constants/Styles";
 import data from "../json/data.json";
@@ -84,7 +84,7 @@ const Home = () => {
                   Spaces
                 </Text>
                 {showData.map((item) => (
-                  <Card
+                  <HomeCard
                     onButtonPress={() => setModalVisible(true)}
                     key={item.id}
                     data={item}
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
-    color:"#557184",
+    color: "#557184",
     paddingLeft: 6,
   },
   searchPlaceholder: {
