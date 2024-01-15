@@ -24,9 +24,9 @@ const BrandNameScreen = () => {
     navigation.goBack();
   };
   const handleAddNewBrand = () => {
-    if (selectedBrand || searchQuery.trim() !== "") {
-      const brandName = selectedBrand?.name || searchQuery.trim();
+    const brandName = selectedBrand?.name || searchQuery.trim();
 
+    if (brandName !== "") {
       navigation.navigate("BrandReg", { brandName });
     }
   };

@@ -11,12 +11,11 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CloseIcon from "../../assets/SVG/closeIcon";
-import ImageUploadAgent from "../components/imageUploadAgent";
+import ImageUpload from "../components/imageUpload";
 import { COLOURS } from "../constants";
 
-export default function AgentRegScreen({ route }) {
+export default function AgentRegScreen({ onImageUpload }) {
   const [text, onChangeText] = useState();
-  const [setImageUploaded] = useState(false);
   const navigation = useNavigation();
   const handleGoBack = () => {
     navigation.goBack();
@@ -44,7 +43,7 @@ export default function AgentRegScreen({ route }) {
             value={text}
             placeholder="Enter your name"
           />
-          <ImageUploadAgent onImageUpload={() => setImageUploaded(true)} />
+          <ImageUpload title="+ My photo" onImageUpload={() => onImageUpload} />
         </View>
       </View>
       <View style={styles.SaveButton}>

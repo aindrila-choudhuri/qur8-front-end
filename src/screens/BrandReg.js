@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CloseIcon from "../../assets/SVG/closeIcon";
-import ImageUploadBrand from "../components/imageUploadBrand";
+import ImageUpload from "../components/imageUpload";
 import { COLOURS } from "../constants";
 
 export default function BrandRegScreen({ route }) {
@@ -55,7 +55,10 @@ export default function BrandRegScreen({ route }) {
             placeholder="Enter name of your brand"
             onFocus={handleTextInputFocus}
           />
-          <ImageUploadBrand onImageUpload={() => setImageUploaded(true)} />
+          <ImageUpload
+            title="+ Brand logo/Identity"
+            onImageUpload={() => setImageUploaded(true)}
+          />
           {imageUploaded ? null : (
             <View style={styles.footerParent}>
               <Text style={styles.text1}>I hereby declare having the </Text>
@@ -78,13 +81,6 @@ export default function BrandRegScreen({ route }) {
 }
 
 const styles = StyleSheet.create({
-  brandReg: {
-    justifyContent: "space-evenly",
-  },
-  ImagePicker: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
   topContainer: {
     paddingTop: 4,
     paddingBottom: 8,

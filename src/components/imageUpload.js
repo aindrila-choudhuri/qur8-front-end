@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import { COLOURS } from "../constants";
-const ImageUploadBrand = ({ onImageUpload }) => {
+const ImageUploadAgent = ({ onImageUpload, title }) => {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ImageUploadBrand = ({ onImageUpload }) => {
         const { status } =
           await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status !== "granted") {
-          alert("Sorry, we need camera roll permissions to make this work!");
+          alert("To proceed grant permission to access your photo gallery");
         }
       }
     })();
@@ -51,7 +51,7 @@ const ImageUploadBrand = ({ onImageUpload }) => {
       ) : (
         <TouchableOpacity onPress={pickImage} style={styles.SecondaryBtn}>
           <View style={styles.BtnText}>
-            <Text style={styles.logoText}>+ Brand logo/Identity</Text>
+            <Text style={styles.logoText}>{title}</Text>
           </View>
         </TouchableOpacity>
       )}
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
 });
-export default ImageUploadBrand;
+export default ImageUploadAgent;
