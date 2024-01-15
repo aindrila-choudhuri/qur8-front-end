@@ -19,7 +19,7 @@ const ShadowIcon = (props) => (
         ry={3}
       />
     </G>
-    <Defs></Defs>
+    <Defs />
   </Svg>
 );
 export default ShadowIcon;
