@@ -15,7 +15,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "The app accesses your photos to let you share your profile photo"
+          "photosPermission": "Grant Qur8 permission to access your photo gallery for a richer experience!"
         }
       ]
     ],
