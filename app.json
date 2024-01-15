@@ -11,9 +11,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "assets/*"
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Grant Qur8 permission to access your photo gallery for a richer experience!"
+        }
+      ]
     ],
+    "assetBundlePatterns": ["assets/*"],
     "ios": {
       "supportsTablet": true
     },

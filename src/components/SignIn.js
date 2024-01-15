@@ -70,7 +70,7 @@ const SignIn = ({ modalVisible, setModalVisible }) => {
             <Text style={styles.phNo}>Phone Number</Text>
             <TextInput
               style={styles.number}
-              onChangeText={onChangeNumber}
+              onChangeText={(value) => onChangeNumber(value.toString())}
               value={number}
               placeholder="Enter your phone number"
               keyboardType="numeric"
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     color: COLOURS.primary,
     textAlign: "left",
     alignSelf: "stretch",
-    fontWeight: "bold",
+    fontWeight: "700",
   },
   signIntro: {
     fontSize: 12,
@@ -180,8 +180,8 @@ const styles = StyleSheet.create({
     paddingLeft: 4,
   },
   proceed: {
-    fontWeight: "600",
     color: COLOURS.white,
+    fontWeight: "600",
   },
   footerParent: {
     justifyContent: "center",
@@ -195,8 +195,8 @@ const styles = StyleSheet.create({
   },
   textBold: {
     fontSize: 12,
-    fontWeight: "600",
     color: COLOURS.primary,
+    fontWeight: "600",
   },
 });
 export default SignIn;
