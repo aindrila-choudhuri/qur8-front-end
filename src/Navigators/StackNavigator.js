@@ -8,7 +8,11 @@ import React from "react";
 
 import "react-native-gesture-handler";
 import BottomTabNavigator from "./BottomTab";
+import AgentRegScreen from "../screens/AgentReg";
+import BrandNameScreen from "../screens/BrandName";
+import BrandRegScreen from "../screens/BrandReg";
 import Home from "../screens/Home";
+import PersonaScreen from "../screens/PersonaSelection";
 import SearchPage from "../screens/SearchPage";
 
 const Stack = createStackNavigator();
@@ -37,6 +41,26 @@ export default function StackNavigator() {
           options={{ headerShown: false }}
           name="BottomTab"
           component={BottomTabNavigator}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="PersonaScreen"
+          component={PersonaScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="BrandReg"
+          component={BrandRegScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="BrandName"
+          component={BrandNameScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="AgentReg"
+          component={AgentRegScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
