@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LocalSvg } from "react-native-svg";
 
@@ -10,15 +10,10 @@ import { Styles } from "../../constants/Styles";
 const OffersRWACard = () => {
   const [selectedCampaignOption, setSelectedCampaignOption] = useState(null);
   const [selectedDates, setSelectedDates] = useState([null, null, null]);
-  const [offerButtonColor, setOfferButtonColor] = useState("#557184");
-
-  useEffect(() => {
-    if (selectedCampaignOption && selectedDates.every((date) => date)) {
-      setOfferButtonColor("#007DD0");
-    } else {
-      setOfferButtonColor("#557184");
-    }
-  }, [selectedCampaignOption, selectedDates]);
+  const offerButtonColor =
+    selectedCampaignOption && selectedDates.every((date) => date)
+      ? "#007DD0"
+      : "#557184";
 
   const navigation = useNavigation();
 
@@ -27,9 +22,7 @@ const OffersRWACard = () => {
       selectedCampaignOption !== null &&
       selectedDates.every((date) => date !== null)
     ) {
-      console.log("Offer clicked!");
       navigation.navigate("Offers");
-      console.log(selectedCampaignOption, selectedDates);
     }
   };
 

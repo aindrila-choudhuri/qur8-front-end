@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   searchContainer: {
-    // marginTop: 16,
     width: "100%",
     paddingVertical: 13,
     borderRadius: 12,

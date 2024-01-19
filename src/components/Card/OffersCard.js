@@ -4,23 +4,27 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Styles } from "../../constants/Styles";
 
 const OffersCard = ({ data }) => {
-  let acceptedTextStyle = styles.acceptedText;
-
-  if (data.status !== "Accepted") {
-    acceptedTextStyle = {
-      ...styles.acceptedText,
-      backgroundColor: "#FFF0E8",
-      color: "#CF703B",
-    };
-  }
+  const textStyle = Styles.mdSemiBold;
+  const acceptedTextStyle = StyleSheet.compose(styles.acceptedText);
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.cardContainer}>
-        <Text style={[Styles.mdSemiBold, styles.titleText]}>{data.title}</Text>
+        <Text style={[textStyle, styles.titleText]}>{data.title}</Text>
         <View style={styles.infoRow}>
           <Text style={styles.infoText}>{data.info}</Text>
-          <Text style={acceptedTextStyle}>{data.status}</Text>
+          <Text
+            style={
+              data.status !== "Accepted"
+                ? StyleSheet.compose(acceptedTextStyle, {
+                    backgroundColor: "#FFF0E8",
+                    color: "#CF703B",
+                  })
+                : acceptedTextStyle
+            }
+          >
+            {data.status}
+          </Text>
         </View>
         <View style={styles.separator} />
         <View style={styles.priceRow}>
@@ -49,6 +53,7 @@ const OffersCard = ({ data }) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: "white",

@@ -6,10 +6,20 @@ import { useSelector } from "react-redux";
 import { Styles } from "../../constants/Styles";
 import { selectIsLoggedIn } from "../../redux/slices/authSlices";
 
+const InfoContainer = ({ label, value, campaignText }) => {
+  return (
+    <View style={styles.infoContainer}>
+      <Text style={styles.minMaxText}>{label}</Text>
+      <Text style={styles.priceText}>{value}</Text>
+      <Text style={styles.campaignText}> - Campaign Type</Text>
+    </View>
+  );
+};
+
 const HomeCard = ({ data, onButtonPress }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
   const navigation = useNavigation();
+
   return (
     <Pressable
       onPress={
@@ -25,16 +35,8 @@ const HomeCard = ({ data, onButtonPress }) => {
         <Text style={styles.dot}>•</Text>
         <Text style={styles.infoText}>{data.distance}</Text>
       </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.minMaxText}>Min </Text>
-        <Text style={styles.priceText}>{data.minPrice}</Text>
-        <Text style={styles.campaignText}> - Campaign Type</Text>
-      </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.minMaxText}>Max </Text>
-        <Text style={styles.priceText}>{data.maxPrice}</Text>
-        <Text style={styles.campaignText}> - Campaign Type</Text>
-      </View>
+      <InfoContainer label="Min  " value={data.minPrice} />
+      <InfoContainer label="Max  " value={data.maxPrice} />
     </Pressable>
   );
 };
@@ -57,13 +59,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
   },
-
   infoText: {
     color: "#557184",
     fontSize: 14,
     marginRight: 10,
   },
-
   dot: {
     fontSize: 20,
     color: "#557184",
