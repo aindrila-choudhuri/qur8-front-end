@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useRef, useState, useEffect } from "react";
 import {
@@ -13,6 +14,10 @@ import OtpIcon from "../../assets/SVG/otpIcon";
 import { COLOURS } from "../constants";
 
 const Otp = ({ modalVisible, setModalVisible }) => {
+  const navigation = useNavigation();
+  const handleOpenPersona = () => {
+    navigation.navigate("PersonaScreen");
+  };
   const inputRefs = Array.from({ length: 6 }, () => useRef());
   const number = 12324234234;
   const [isPressed, setIsPressed] = useState(false);
@@ -91,7 +96,13 @@ const Otp = ({ modalVisible, setModalVisible }) => {
               </Text>
             </View>
           </View>
-          <TouchableOpacity onPress={handlePress}>
+          <TouchableOpacity
+            onPress={() => {
+              handlePress();
+              handleOpenPersona();
+              toggleModal();
+            }}
+          >
             <View style={styles.PrimaryBtn}>
               <View
                 style={[
@@ -139,7 +150,7 @@ const styles = StyleSheet.create({
     color: COLOURS.primary,
     textAlign: "left",
     alignSelf: "stretch",
-    fontWeight: "bold",
+    fontWeight: "700",
   },
   otpIntro: {
     fontSize: 12,
@@ -163,6 +174,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10,
     justifyContent: "space-evenly",
+    fontWeight: "400",
   },
   inputView: {
     height: 54,
@@ -174,7 +186,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLOURS.white,
     textAlign: "center",
     fontSize: 18,
-    fontWeight: 400,
   },
   resendText: {
     paddingTop: 12,
@@ -200,8 +211,8 @@ const styles = StyleSheet.create({
   },
 
   proceed: {
-    fontWeight: "600",
     color: COLOURS.white,
+    fontWeight: "600",
   },
   footerParent: {
     width: "100%",
