@@ -1,15 +1,25 @@
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import OffersRWACard from "../components/Card/OffersRWACard";
 
 const OffersRWA = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.header}>
-        <AntDesign name="arrowleft" size={20} color="#557184" />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <AntDesign name="arrowleft" size={20} color="#557184" />
+        </TouchableOpacity>
         <Text style={styles.headerText}>Offer RWA</Text>
         <Text />
       </View>

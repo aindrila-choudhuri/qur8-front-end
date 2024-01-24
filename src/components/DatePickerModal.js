@@ -1,5 +1,10 @@
 import React from "react";
-import { Modal, View, StyleSheet } from "react-native";
+import {
+  Modal,
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { Calendar } from "react-native-calendars";
 
 const DatePickerModal = ({ isVisible, onSelect }) => {
@@ -8,17 +13,26 @@ const DatePickerModal = ({ isVisible, onSelect }) => {
     onSelect(selectedDate);
   };
 
+  const handleBackgroundPress = () => {
+    onSelect(null);
+  };
+
   if (!isVisible) {
     return null;
   }
 
   return (
     <Modal animationType="slide" transparent visible={isVisible}>
-      <View style={styles.modalBackground}>
-        <View style={styles.modalContainer}>
-          <Calendar onDayPress={(day) => handleDateSelect(day)} hideExtraDays />
+      <TouchableWithoutFeedback onPress={handleBackgroundPress}>
+        <View style={styles.modalBackground}>
+          <View style={styles.modalContainer}>
+            <Calendar
+              onDayPress={(day) => handleDateSelect(day)}
+              hideExtraDays
+            />
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };
