@@ -12,6 +12,7 @@ import AgentRegScreen from "../screens/AgentReg";
 import BrandNameScreen from "../screens/BrandName";
 import BrandRegScreen from "../screens/BrandReg";
 import Home from "../screens/Home";
+import OfferGeneration from "../screens/OfferGeneration";
 import PersonaScreen from "../screens/PersonaSelection";
 import SearchPage from "../screens/SearchPage";
 
@@ -36,6 +37,11 @@ export default function StackNavigator() {
           options={{ headerShown: false }}
           name="SearchPage"
           component={SearchPage}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="OfferGeneration"
+          component={OfferGeneration}
         />
         <Stack.Screen
           options={{ headerShown: false }}
