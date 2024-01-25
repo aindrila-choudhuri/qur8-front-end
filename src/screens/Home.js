@@ -26,7 +26,9 @@ const Home = () => {
   const [showData, setShowData] = useState([]);
 
   const navigation = useNavigation();
-
+  const handleHome = () => {
+    navigation.navigate("AgentProfile");
+  };
   useEffect(() => {
     const filteredData = data.filter((item) =>
       item.title.toLowerCase().includes(text.toLowerCase()),
@@ -67,14 +69,16 @@ const Home = () => {
               />
               <Text style={styles.searchPlaceholder}>Search</Text>
             </View>
-            <View style={styles.searchIcon}>
-              <LocalSvg
-                width={36}
-                height={36}
-                asset={require("../../assets/search2.svg")}
-                style={styles.searchIconSvg}
-              />
-            </View>
+            <TouchableOpacity onPress={handleHome}>
+              <View style={styles.searchIcon}>
+                <LocalSvg
+                  width={36}
+                  height={36}
+                  asset={require("../../assets/search2.svg")}
+                  style={styles.searchIconSvg}
+                />
+              </View>
+            </TouchableOpacity>
           </TouchableOpacity>
 
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
