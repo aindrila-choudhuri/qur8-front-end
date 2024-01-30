@@ -14,7 +14,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
 
-import Card from "../components/Card";
+import HomeCard from "../components/Card/HomeCard";
 import Loading from "../components/Loading";
 import data from "../json/data.json";
 import { store } from "../redux/store";
@@ -85,7 +85,7 @@ const SearchPage = () => {
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <View>
               {showData.map((item) => (
-                <Card key={item.id} data={item} />
+                <HomeCard key={item.id} data={item} />
               ))}
             </View>
           </ScrollView>
@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   searchContainer: {
-    marginTop: 16,
     width: "100%",
     paddingVertical: 13,
     borderRadius: 12,
@@ -111,6 +110,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
+    color: "#557184",
     paddingLeft: 6,
   },
   input: {

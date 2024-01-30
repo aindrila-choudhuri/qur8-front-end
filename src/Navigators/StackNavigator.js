@@ -11,7 +11,9 @@ import BottomTabNavigator from "./BottomTab";
 import AgentRegScreen from "../screens/AgentReg";
 import BrandNameScreen from "../screens/BrandName";
 import BrandRegScreen from "../screens/BrandReg";
+import DealDetails from "../screens/DealDetails";
 import Home from "../screens/Home";
+import OfferGeneration from "../screens/OfferGeneration";
 import PersonaScreen from "../screens/PersonaSelection";
 import SearchPage from "../screens/SearchPage";
 
@@ -39,6 +41,11 @@ export default function StackNavigator() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
+          name="OfferGeneration"
+          component={OfferGeneration}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
           name="BottomTab"
           component={BottomTabNavigator}
         />
@@ -61,6 +68,11 @@ export default function StackNavigator() {
           options={{ headerShown: false }}
           name="AgentReg"
           component={AgentRegScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="DealsDetails"
+          component={DealDetails}
         />
       </Stack.Navigator>
     </NavigationContainer>
