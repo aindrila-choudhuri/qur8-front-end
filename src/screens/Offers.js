@@ -34,7 +34,6 @@ const Offers = () => {
   const changeTab1 = (tab) => {
     setSelectedTab1(tab);
   };
-
   const todayData = data.filter((item) => item.date === "today");
   const tomorrowData = data.filter((item) => item.date === "tomorrow");
 
