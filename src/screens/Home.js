@@ -16,7 +16,7 @@ import { LocalSvg } from "react-native-svg";
 import { Provider } from "react-redux";
 
 import { store } from "../../src/redux/store";
-import Card from "../components/Card";
+import HomeCard from "../components/Card/HomeCard";
 import SignIn from "../components/SignIn";
 import { Styles } from "../constants/Styles";
 import data from "../json/data.json";
@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <ImageBackground
       source={require("../../assets/gradient.png")}
-      style={styles.backgroundImage}
+      style={{ flex: 1 }}
     >
       <Provider store={store}>
         <SafeAreaView style={styles.container}>
@@ -89,7 +89,7 @@ const Home = () => {
                   Spaces
                 </Text>
                 {showData.map((item) => (
-                  <Card
+                  <HomeCard
                     onButtonPress={() => setModalVisible(true)}
                     key={item.id}
                     data={item}
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
+    color: "#557184",
     paddingLeft: 6,
   },
   searchPlaceholder: {
