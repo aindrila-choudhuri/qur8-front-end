@@ -1,15 +1,11 @@
-import * as React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
-import { COLOURS } from "../constants";
-import PayAgentIcon from "../../assets/SVG/payAgentIcon";
 import { LinearGradient } from "expo-linear-gradient";
-import ProceedIcon from "../../assets/SVG/proceedIcon";
+import * as React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
+
+import PayAgentIcon from "../../assets/SVG/payAgentIcon";
+import ProceedIcon from "../../assets/SVG/proceedIcon";
+import { COLOURS } from "../constants";
 
 const PayDealBrand = ({ payDealVisible, setPayDealVisible }) => {
   const toggleModalPayDeal = () => {
@@ -69,7 +65,7 @@ const PayDealBrand = ({ payDealVisible, setPayDealVisible }) => {
           </View>
         </View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity onPress={()=> setPayDealVisible(false)}>
+          <TouchableOpacity onPress={() => setPayDealVisible(false)}>
             <View style={styles.PrimaryBtn}>
               <View style={styles.BtnText}>
                 <Text style={styles.proceed}>Pay ₹9000 to book the deal </Text>
@@ -170,7 +166,7 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingLeft: 24,
     paddingRight: 24,
-    paddingBottom:36,
+    paddingBottom: 36,
   },
   PrimaryBtn: {
     height: 52,

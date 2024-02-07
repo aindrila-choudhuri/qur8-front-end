@@ -31,7 +31,7 @@ export default function BrandRegScreen({ route }) {
   };
 
   const handleSave = () => {
-    navigation.navigate("BottomTab")
+    navigation.navigate("BottomTab");
   };
 
   return (

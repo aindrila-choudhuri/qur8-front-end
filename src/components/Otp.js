@@ -17,7 +17,7 @@ const Otp = ({
   modalVisible,
   setModalVisible,
   length = 6,
-  onOtpSubmit = () => {}
+  onOtpSubmit = () => {},
 }) => {
   const navigation = useNavigation();
   const handleOpenPersona = () => {
@@ -28,8 +28,7 @@ const Otp = ({
   const handlePress = () => {
     setIsPressed(!isPressed);
   };
-  const [count, setCount] = useState(60);
-
+  
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
@@ -124,7 +123,7 @@ const Otp = ({
             </View>
             <View style={styles.resendText}>
               <Text style={{ fontStyle: "italic" }}>
-                OTP not received? Resend in {count} secs
+                OTP not received? Resend in 60 secs
               </Text>
             </View>
           </View>
@@ -136,12 +135,7 @@ const Otp = ({
             }}
           >
             <View style={styles.PrimaryBtn}>
-              <View
-                style={[
-                  styles.BtnText
-            
-                ]}
-              >
+              <View style={[styles.BtnText]}>
                 <Text style={styles.proceed}>Sign In</Text>
               </View>
             </View>

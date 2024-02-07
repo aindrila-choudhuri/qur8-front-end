@@ -1,13 +1,6 @@
 import * as ImagePicker from "expo-image-picker";
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-  Platform,
-  Text,
-} from "react-native";
+import React, { useState } from "react";
+import { View, TouchableOpacity, Image, StyleSheet, Text } from "react-native";
 
 import { COLOURS } from "../constants";
 const ImageUpload = ({ onImageUpload, title }) => {

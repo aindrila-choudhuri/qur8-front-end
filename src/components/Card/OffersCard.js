@@ -1,15 +1,9 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Styles } from "../../constants/Styles";
 
-const OffersCard = ({ data , onButtonPress }) => {
+const OffersCard = ({ data, onButtonPress }) => {
   const textStyle = Styles.mdSemiBold;
   const acceptedTextStyle = StyleSheet.compose(styles.acceptedText);
 

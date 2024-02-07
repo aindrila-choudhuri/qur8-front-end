@@ -15,9 +15,9 @@ import { LocalSvg } from "react-native-svg";
 
 import OffersCard from "../components/Card/OffersCard";
 import CustomModal from "../components/Modal";
+import PayDealBrand from "../components/PayDealBrand";
 import { Styles } from "../constants/Styles";
 import data from "../json/offersData.json";
-import PayDealBrand from "../components/PayDealBrand";
 
 const Offers = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,9 +27,6 @@ const Offers = () => {
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
-  };
-  const toggleModalPayDeal = () => {
-    setPayDealVisible(!payDealVisible);
   };
   const changeTab = (tab) => {
     setSelectedTab(tab);
