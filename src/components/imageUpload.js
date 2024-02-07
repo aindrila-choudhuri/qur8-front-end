@@ -10,37 +10,32 @@ import {
 } from "react-native";
 
 import { COLOURS } from "../constants";
-const ImageUploadAgent = ({ onImageUpload, title }) => {
-  const [image, setImage] = useState(null);
-
-  useEffect(() => {
-    // Request permission to access the device's gallery
-    (async () => {
-      if (Platform.OS !== "web") {
-        const { status } =
-          await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== "granted") {
-          alert("To proceed grant permission to access your photo gallery");
-        }
-      }
-    })();
-  }, []);
+const ImageUpload = ({ onImageUpload, title }) => {
+  const [image, setImage] = useState();
 
   const pickImage = async () => {
     try {
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
-        aspect: [4, 3],
+        aspect: [1, 1],
         quality: 1,
       });
 
       if (!result.canceled) {
-        setImage(result.assets[0].uri);
-        onImageUpload();
+        saveImage(result.assets[0].uri);
       }
     } catch (error) {
-      console.error("Error picking an image", error);
+      alert("Error picking an image", error);
+    }
+  };
+
+  const saveImage = async (image) => {
+    try {
+      setImage(image);
+    } catch (error) {
+      throw error;
     }
   };
 
@@ -90,4 +85,4 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
 });
-export default ImageUploadAgent;
+export default ImageUpload;
