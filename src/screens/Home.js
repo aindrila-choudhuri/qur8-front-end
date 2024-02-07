@@ -37,6 +37,9 @@ const Home = () => {
   const handlePress = () => {
     navigation.navigate("SearchPage");
   };
+  const handleHome = () => {
+    navigation.navigate("ProfileInitial");
+  };
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <ImageBackground
@@ -67,14 +70,16 @@ const Home = () => {
               />
               <Text style={styles.searchPlaceholder}>Search</Text>
             </View>
-            <View style={styles.searchIcon}>
-              <LocalSvg
-                width={36}
-                height={36}
-                asset={require("../../assets/search2.svg")}
-                style={styles.searchIconSvg}
-              />
-            </View>
+            <TouchableOpacity onPress={handleHome}>
+              <View style={styles.searchIcon}>
+                <LocalSvg
+                  width={36}
+                  height={36}
+                  asset={require("../../assets/search2.svg")}
+                  style={styles.searchIconSvg}
+                />
+              </View>
+            </TouchableOpacity>
           </TouchableOpacity>
 
           <ScrollView contentContainerStyle={styles.scrollViewContent}>

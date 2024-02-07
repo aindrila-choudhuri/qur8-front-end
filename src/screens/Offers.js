@@ -15,18 +15,19 @@ import { LocalSvg } from "react-native-svg";
 
 import OffersCard from "../components/Card/OffersCard";
 import CustomModal from "../components/Modal";
+import PayDealBrand from "../components/PayDealBrand";
 import { Styles } from "../constants/Styles";
 import data from "../json/offersData.json";
 
 const Offers = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [payDealVisible, setPayDealVisible] = useState(false);
   const [selectedTab, setSelectedTab] = useState("upcoming");
   const [selectedTab1, setSelectedTab1] = useState("all");
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
-
   const changeTab = (tab) => {
     setSelectedTab(tab);
   };
@@ -94,7 +95,11 @@ const Offers = () => {
                 Campaigns Today
               </Text>
               {todayData.map((item) => (
-                <OffersCard key={item.id} data={item} />
+                <OffersCard
+                  onButtonPress={() => setPayDealVisible(true)}
+                  key={item.id}
+                  data={item}
+                />
               ))}
             </View>
 
@@ -104,12 +109,19 @@ const Offers = () => {
                 Campaigns Tomorrow
               </Text>
               {tomorrowData.map((item) => (
-                <OffersCard key={item.id} data={item} />
+                <OffersCard
+                  onButtonPress={() => setPayDealVisible(true)}
+                  key={item.id}
+                  data={item}
+                />
               ))}
             </View>
           </View>
         </ScrollView>
-
+        <PayDealBrand
+          payDealVisible={payDealVisible}
+          setPayDealVisible={setPayDealVisible}
+        />
         <CustomModal
           modalVisible={modalVisible}
           toggleModal={toggleModal}

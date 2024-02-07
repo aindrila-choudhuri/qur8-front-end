@@ -35,7 +35,7 @@ const SignIn = ({ modalVisible, setModalVisible }) => {
       <Modal
         visible={modalVisible}
         transparent
-        swipeDirection="down"
+        swipeDirection="up"
         onBackdropPress={() => toggleModal()}
         onSwipeComplete={() => toggleModal()}
         animationIn="slideInUp"

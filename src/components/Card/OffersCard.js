@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Styles } from "../../constants/Styles";
 
-const OffersCard = ({ data }) => {
+const OffersCard = ({ data, onButtonPress }) => {
   const textStyle = Styles.mdSemiBold;
   const acceptedTextStyle = StyleSheet.compose(styles.acceptedText);
 
@@ -46,7 +46,7 @@ const OffersCard = ({ data }) => {
       </View>
       <View style={styles.separator} />
       {data.status !== "Pending Acceptance" && (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={onButtonPress} style={styles.button}>
           <Text style={styles.buttonText}>Book the Deal</Text>
         </TouchableOpacity>
       )}

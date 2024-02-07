@@ -13,29 +13,64 @@ import Modal from "react-native-modal";
 import OtpIcon from "../../assets/SVG/otpIcon";
 import { COLOURS } from "../constants";
 
-const Otp = ({ modalVisible, setModalVisible }) => {
+const Otp = ({
+  modalVisible,
+  setModalVisible,
+  length = 6,
+  onOtpSubmit = () => {},
+}) => {
   const navigation = useNavigation();
   const handleOpenPersona = () => {
     navigation.navigate("PersonaScreen");
   };
-  const inputRefs = Array.from({ length: 6 }, () => useRef());
   const number = 12324234234;
   const [isPressed, setIsPressed] = useState(false);
   const handlePress = () => {
     setIsPressed(!isPressed);
   };
-  const [count, setCount] = useState(60);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (count === 0) {
-        clearInterval(interval);
-      } else {
-        setCount(count - 1);
-      }
-    }, 1000);
-  }, [count]);
+  
   const toggleModal = () => {
     setModalVisible(!modalVisible);
+  };
+  const [otp, setOtp] = useState(new Array(length).fill(""));
+  const inputRefs = useRef([]);
+
+  useEffect(() => {
+    if (inputRefs.current[0]) {
+      inputRefs.current[0].focus();
+    }
+  }, []);
+
+  const handleChange = (index, value) => {
+    if (isNaN(value)) return;
+
+    const newOtp = [...otp];
+    newOtp[index] = value.substring(value.length - 1);
+    setOtp(newOtp);
+
+    const combinedOtp = newOtp.join("");
+    if (combinedOtp.length === length) onOtpSubmit(combinedOtp);
+
+    if (value && index < length - 1 && inputRefs.current[index + 1]) {
+      inputRefs.current[index + 1].focus();
+    }
+  };
+
+  const handleClick = (index) => {
+    if (index > 0 && !otp[index - 1]) {
+      inputRefs.current[otp.indexOf("")].focus();
+    }
+  };
+
+  const handleKeyDown = (index, e) => {
+    if (
+      e.nativeEvent.key === "Backspace" &&
+      !otp[index] &&
+      index > 0 &&
+      inputRefs.current[index - 1]
+    ) {
+      inputRefs.current[index - 1].focus();
+    }
   };
   return (
     <>
@@ -73,26 +108,22 @@ const Otp = ({ modalVisible, setModalVisible }) => {
         <View style={styles.bottomContainer}>
           <View>
             <View style={styles.otpView}>
-              {inputRefs.map((ref, index) => (
+              {otp.map((value, index) => (
                 <TextInput
                   key={index}
-                  ref={ref}
+                  ref={(input) => (inputRefs.current[index] = input)}
+                  value={value}
+                  onChangeText={(text) => handleChange(index, text)}
+                  onFocus={() => handleClick(index)}
+                  onKeyPress={(e) => handleKeyDown(index, e)}
                   style={styles.inputView}
                   keyboardType="number-pad"
-                  maxLength={1}
-                  onChangeText={(txt) => {
-                    if (txt.length && index < inputRefs.length - 1) {
-                      inputRefs[index + 1].current.focus();
-                    } else if (txt.length < 1 && index > 0) {
-                      inputRefs[index - 1].current.focus();
-                    }
-                  }}
                 />
               ))}
             </View>
             <View style={styles.resendText}>
               <Text style={{ fontStyle: "italic" }}>
-                OTP not received? Resend in {count} secs
+                OTP not received? Resend in 60 secs
               </Text>
             </View>
           </View>
@@ -104,12 +135,7 @@ const Otp = ({ modalVisible, setModalVisible }) => {
             }}
           >
             <View style={styles.PrimaryBtn}>
-              <View
-                style={[
-                  styles.BtnText,
-                  { backgroundColor: isPressed ? "#004F84" : "#007DD0" },
-                ]}
-              >
+              <View style={[styles.BtnText]}>
                 <Text style={styles.proceed}>Sign In</Text>
               </View>
             </View>

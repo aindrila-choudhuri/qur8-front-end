@@ -25,7 +25,7 @@ const PersonaScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.pageContainer}>
       <View style={styles.topContainer}>
         <View style={styles.CloseIcon}>
           <TouchableOpacity onPress={handleGoBack}>
@@ -53,6 +53,10 @@ const PersonaScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  pageContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
   topContainer: {
     justifyContent: "center",
     height: 50,
